@@ -1,3 +1,11 @@
+<?php
+require_once("includes/config.php");
+
+if (!isset($_SESSION["userLoggedIn"])) {
+    header("Location: register.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

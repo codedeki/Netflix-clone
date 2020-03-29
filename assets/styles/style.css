@@ -10,7 +10,7 @@ body {
     color: #333;
 }
 
-/* ----------------------- Register Form Styles ----------------------- */
+/* ----------------------- Register & LogIn Form Styles ----------------------- */
 .signInContainer {
     background-color: #efefee;
     min-height: 100vh;
@@ -32,7 +32,7 @@ body {
 .column form {
     display: flex;
     flex-direction: column;
-    padding: 24px;
+    padding-top: 24px;
 }
 
 .column form input[type="text"],
@@ -50,11 +50,13 @@ body {
     color: #fff;
     height: 36px;
     width: 88px;
+    border: none;
     border-radius: 3px;
     font-weight: 500;
     margin-top: 10px;
     margin-bottom: 20px;
     font-size: 16px;
+    cursor: pointer;
 }
 
 .column .header {
@@ -83,4 +85,11 @@ body {
     font-size: 14px;
     font-weight: 400;
     text-decoration: none;
+}
+
+.errorMessage {
+    color: #f00;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
 }
