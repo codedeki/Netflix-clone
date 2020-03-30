@@ -11,10 +11,22 @@ body {
     box-sizing: border-box;
 }
 
+h3 {
+    color: #e5e5e5;
+}
+
+a h3:hover {
+    color: #fff;
+}
+
 .wrapper {
     min-width: 1050px;
     min-height: 100%;
     background-color: #141414;
+}
+
+a {
+    text-decoration: none;
 }
 
 /* ----------------------- Register & LogIn Form Styles ----------------------- */
@@ -113,6 +125,20 @@ body {
     display: flex;
 }
 
+/* preview card styles */
+.previewContainer.small {
+    width: 230px;
+    height: 129px;
+    margin-right: 4px;
+    display: inline-flex;
+}
+
+.previewContainer.small img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* preview card styles */
 .previewOverlay {
     width: 100%;
     height: 100%;
@@ -160,4 +186,22 @@ body {
 .mainDetails button:hover {
     background-color: #e6e6e6;
     color: #000;
+}
+
+/* ----------------------- Entity Preview Card Main Styles ----------------------- */
+
+.category {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+}
+
+.entities {
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+.previewCategories {
+    padding: 0 50px;
 }
