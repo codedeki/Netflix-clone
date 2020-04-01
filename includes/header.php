@@ -10,7 +10,7 @@ require_once("includes/classes/Season.php");
 require_once("includes/classes/Video.php");
 
 if (!isset($_SESSION["userLoggedIn"])) {
-    header("Location: register.php");
+    header("Location: login.php");
 }
 
 $userLoggedIn = $_SESSION["userLoggedIn"];

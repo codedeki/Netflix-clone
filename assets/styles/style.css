@@ -257,3 +257,35 @@ a {
 .previewCategories.noScroll .category .entities {
     white-space: normal;
 }
+
+.watchContainer video {
+    width: 100%;
+    height: 100vh;
+}
+
+.videoControls {
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.videoControls h1 {
+    color: #fff;
+}
+
+.videoControls button {
+    font-size: 50px;
+    padding: 50px;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.watchNav.active {
+    opacity: 0;
+    transition: opacity 2s;
+}

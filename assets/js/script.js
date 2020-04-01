@@ -17,9 +17,58 @@ function previewEnded() {
         videoToggle.setAttribute("hidden", "true");
 }
 
+function goBack() {
+    window.history.back();
+  }
 
+function startHideTimer() {
+    let timeout = null;
+    
+        clearTimeout(timeout);
+        const watch = document.querySelector(".watchNav");
+            watch.classList.remove("active");
+    
+        timeout = setTimeout(() => {
+            watch.classList.add("active");
+            }, 2000);
+    }
 
+function initVideo(videoId, username) {
+    startHideTimer();
+    // updateProgressTimer(videoId, username);
+}
 
+function updateProgressTimer(videoId, username) {
+    addDuration(videoId, username);
 
+    let timer;
 
+    const video = document.query("video");
+    console.log(video);
 
+}
+
+function addDuration(videoId, username) {
+
+    const data = { videoId: videoId, username: username };
+    
+    if (data !== null && data !== "") {
+        
+    }
+    
+    fetch("ajax/addDuration.php", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    })
+
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data); 
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+}
