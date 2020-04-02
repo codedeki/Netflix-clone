@@ -1,7 +1,10 @@
+//queries
+const videoPlayer = document.getElementsByTagName("video");
 
+//functions
 function volumeToggle(button) {
     //when you click the button it always does the opposite of what is currently set
-    const toggleMute = document.querySelector(".previewVideo").muted = !document.querySelector(".previewVideo").muted;
+    const toggleMute = document.querySelector("previewVideo").muted = !document.querySelector(".previewVideo").muted;
     let img = document.getElementById("volumeMainPage");
 
     if (img.src.match('assets/images/volume-mute.png')) img.src = "assets/images/volume.png";
@@ -35,40 +38,104 @@ function startHideTimer() {
 
 function initVideo(videoId, username) {
     startHideTimer();
-    // updateProgressTimer(videoId, username);
+    setStartTime(videoId, username);
+    updateProgressTimer(videoId, username);
 }
 
 function updateProgressTimer(videoId, username) {
     addDuration(videoId, username);
-
-    let timer;
-
-    const video = document.query("video");
-    console.log(video);
-
-}
-
-function addDuration(videoId, username) {
-
-    const data = { videoId: videoId, username: username };
     
-    if (data !== null && data !== "") {
-        
+    let timer;
+    const video = document.querySelector("video");
+
+    video.onplaying = function(event) {
+        window.clearInterval(timer);
+            timer = window.setInterval(function () {
+                updateProgress(videoId, username, event.target.currentTime);
+            }, 3000);  
+    }
+
+    video.onpause = function () {
+        window.clearInterval(timer);
+    }
+
+    video.onended = function() {
+        setFinished(videoId, username);
+        window.clearInterval(timer);
     }
     
-    fetch("ajax/addDuration.php", {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    })
+}
+    
+function addDuration(videoId, username) {
+    //call formData constructor to get PHP data
+    const formData = new FormData();
+    //pass our key/value pairs to constructor
+    formData.append("videoId", videoId);
+    formData.append("username", username);
 
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data); 
+    if (formData !== null && formData !== "") {
+        fetch("ajax/addDuration.php", {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => response.text())
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }  
+}
+
+function updateProgress(videoId, username, progress) {
+    
+    const formData = new FormData();
+   
+    formData.append("videoId", videoId);
+    formData.append("username", username);
+    formData.append("progress", progress);
+
+    if (formData !== null && formData !== "") {
+        fetch("ajax/updateDuration.php", {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => response.text())
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }  
+}
+    
+function setFinished(videoId, username) {
+  
+    const formData = new FormData();
+ 
+    formData.append("videoId", videoId);
+    formData.append("username", username);
+
+    if (formData !== null && formData !== "") {
+        fetch("ajax/setFinished.php", {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => response.text())
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }  
+}
+
+//convert later to native fetch using the query at top of file:: for now easier with JQuery to save current time
+function setStartTime(videoId, username) {
+
+    $.post("ajax/getProgress.php", { videoId: videoId, username: username }, function(data) {
+        if(isNaN(data)) {
+            alert(data);
+            return;
+        }
+
+        $("video").on("canplay", function() {
+            this.currentTime = data;
+            $("video").off("canplay");
+        })
     })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
 }

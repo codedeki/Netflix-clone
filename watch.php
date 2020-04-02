@@ -23,7 +23,6 @@ $video->incrementViews();
 </div>
 
 <script>
-    document.onmousemove = function () {
+    const video = document.querySelector("video");
         initVideo("<?php echo $video->getId(); ?>", "<?php echo $userLoggedIn; ?>");
-    }
 </script>

@@ -24,7 +24,8 @@ $userLoggedIn = $_SESSION["userLoggedIn"];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Netflix N Chilli</title>
     <link rel="stylesheet" type="text/css" href="assets/styles/style.css">
-    <script src="assets/js/script.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="assets/js/script.js"></script>
 </head>
 <body>
     <div class="wrapper">
