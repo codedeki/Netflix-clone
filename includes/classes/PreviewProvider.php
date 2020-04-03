@@ -16,12 +16,20 @@ class PreviewProvider {
 
         $id = $entity->getId();
         $name = $entity->getName();
-        $thumbnail = $entity->getThumbnail();
         $preview = $entity->getPreview();
+        $thumbnail = $entity->getThumbnail();
 
-        //TODO: ADD subtitle
+        $videoId = VideoProvider::getEntityVideoForUser($this->con, $id, $this->username);
+        $video = new Video($this->con, $videoId);
+
+        $inProgress = $video->isInProgress($this->username);
+        $playButtonText = $inProgress ? "Continue Watching" : "Play";
+
+        $seasonEpisode = $video->getSeasonAndEpisode();
+        $subHeading = $video->isMovie() ? "" : "<h4>$seasonEpisode</h4>";
         
         return "<div class='previewContainer'>
+                    <button onclick='goToHomePage()' class='homePageButton'><img src='assets/images/home.png' alt='Go to Home Page'></button>
                     <img src='$thumbnail' class='previewImage' hidden>
                     <video autoplay muted class='previewVideo' onended='previewEnded()'>
                         <source src='$preview' type='video/mp4'>
@@ -30,9 +38,9 @@ class PreviewProvider {
                     <div class='previewOverlay'>
                         <div class='mainDetails'>
                             <h3>$name</h3>
-
+                            $subHeading
                             <div class='buttons'>
-                                <button><img src='assets/images/play-white.png'>Play</button>
+                                <button onclick='watchVideo($videoId)'><img src='assets/images/play.png'>$playButtonText</button>
                                 <button onclick='volumeToggle(this)'><img id='volumeMainPage' src='assets/images/volume-mute.png'></button>
                             </div>
 

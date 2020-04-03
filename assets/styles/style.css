@@ -125,6 +125,27 @@ a {
     display: flex;
 }
 
+.homePageButton {
+    z-index: 5;
+    position: absolute;
+    border: none;
+    cursor: pointer;
+    background-color: oldlace;
+    opacity: 60%;
+    top: 25px;
+    left: 25px;
+    border-radius: 20%;
+}
+
+.homePageButton:hover {
+    opacity: 80%;
+}
+
+.homePageButton img {
+    width: 45px;
+    height: 45px;
+}
+
 /* preview card styles */
 .previewContainer.small {
     width: 230px;
@@ -149,6 +170,12 @@ a {
 .previewOverlay .mainDetails h3 {
     color: #fff;
     font-size: 40px;
+    margin: 15px 0;
+}
+
+.previewOverlay .mainDetails h4 {
+    color: #fff;
+    font-size: 20px;
     margin: 15px 0;
 }
 
@@ -207,6 +234,14 @@ a {
     padding: 0 50px;
 }
 
+.seen {
+    color: #2ecc71;
+    font-size: 26px;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
 /* ----------------------- Entity Card Page Styles ----------------------- */
 
 .errorBanner {
@@ -234,9 +269,10 @@ a {
     display: flex;
     flex-direction: column;
     width: 230px;
+    position: relative;
 }
 
-.episodeContainer img {
+.episodeContainer .imageContainer {
     width: 230px;
     height: 129px;
     object-fit: cover;
@@ -285,7 +321,27 @@ a {
     cursor: pointer;
 }
 
+/* ----------------------- Watch Page Styles ----------------------- */
+
 .watchNav.active {
     opacity: 0;
     transition: opacity 2s;
+}
+
+.watchNav {
+    z-index: 5;
+}
+
+.upNext {
+    height: 100%;
+    justify-content: center;
+}
+
+.upNextContainer button {
+    padding: 0;
+}
+
+.upNextContainer h2, 
+.upNextContainedr h3 {
+    color: #fff;
 }

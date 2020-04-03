@@ -8,6 +8,7 @@ if (!isset($_GET["id"])) {
 
 $video = new Video($con, $_GET["id"]);
 $video->incrementViews();
+$upNextVideo = VideoProvider::getUpNext($con, $video);
 ?>
 
 <div class="watchContainer">
@@ -17,12 +18,23 @@ $video->incrementViews();
         <h1><?php echo $video->getTitle(); ?></h1>
     </div>
 
-    <video controls autoplay>
+    <div class="videoControls upNext" style="display: none">
+        <button onclick="restartVideo()"><img src="assets/images/restart.png" alt="restart"></button>
+
+        <div class="upNextContainer">
+            <h2>Up next:</h2>
+            <h3><?php echo $upNextVideo->getTitle(); ?></h3>
+            <h3><?php echo $upNextVideo->getSeasonAndEpisode(); ?></h3>
+
+            <button class="playNext" onclick="watchVideo(<?php echo $upNextVideo->getId(); ?>)"><img src="assets/images/play-white.png" alt="">Play</button>
+        </div>
+    </div>
+
+    <video controls autoplay onended="showUpNext()">
         <source src='<?php echo $video->getFilePath(); ?>' type="video/mp4">
     </video>
 </div>
 
 <script>
-    const video = document.querySelector("video");
         initVideo("<?php echo $video->getId(); ?>", "<?php echo $userLoggedIn; ?>");
 </script>

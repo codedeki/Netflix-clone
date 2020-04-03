@@ -1,5 +1,6 @@
 //queries
-const videoPlayer = document.getElementsByTagName("video");
+const videoPlayer = document.querySelector("video");
+const restart = document.getElementById("restart");
 
 //functions
 function volumeToggle(button) {
@@ -29,8 +30,8 @@ function startHideTimer() {
     let timeout = null;
 
     clearTimeout(timeout);
-    
-        timeout = setTimeout(() => {
+
+    timeout = setTimeout(() => {
         watch.classList.add("active");
         }, 2000);
     
@@ -41,8 +42,8 @@ function startHideTimer() {
 
     watch.onmouseleave = function() {
         timeout = setTimeout(() => {
-        watch.classList.add("active");
-        }, 2000);
+            watch.classList.add("active");
+            }, 2000);
     }  
 }
 
@@ -148,4 +149,22 @@ function setStartTime(videoId, username) {
             $("video").off("canplay");
         })
     })
+}
+
+function restartVideo() {
+    $("video")[0].currentTime = 0;
+    $("video")[0].play();
+    $(".upNext").fadeOut();
+}
+
+function watchVideo(videoId) {
+    window.location.href = "watch.php?id=" + videoId;
+}
+
+function goToHomePage() {
+    window.location.href = "index.php";
+}
+
+function showUpNext() {
+    $(".upNext").fadeIn();
 }
