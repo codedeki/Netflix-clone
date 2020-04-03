@@ -4,7 +4,7 @@ const videoPlayer = document.getElementsByTagName("video");
 //functions
 function volumeToggle(button) {
     //when you click the button it always does the opposite of what is currently set
-    const toggleMute = document.querySelector("previewVideo").muted = !document.querySelector(".previewVideo").muted;
+    const toggleMute = document.querySelector(".previewVideo").muted = !document.querySelector(".previewVideo").muted;
     let img = document.getElementById("volumeMainPage");
 
     if (img.src.match('assets/images/volume-mute.png')) img.src = "assets/images/volume.png";
@@ -25,16 +25,26 @@ function goBack() {
   }
 
 function startHideTimer() {
+    const watch = document.querySelector(".watchNav");
     let timeout = null;
-    
-        clearTimeout(timeout);
-        const watch = document.querySelector(".watchNav");
-            watch.classList.remove("active");
+
+    clearTimeout(timeout);
     
         timeout = setTimeout(() => {
-            watch.classList.add("active");
-            }, 2000);
+        watch.classList.add("active");
+        }, 2000);
+    
+    watch.onmousemove = function() {
+        clearTimeout(timeout);
+        watch.classList.remove("active");
     }
+
+    watch.onmouseleave = function() {
+        timeout = setTimeout(() => {
+        watch.classList.add("active");
+        }, 2000);
+    }  
+}
 
 function initVideo(videoId, username) {
     startHideTimer();
