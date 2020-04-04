@@ -1,5 +1,5 @@
 <?php
-
+$hideNav = true;
 require_once("includes/header.php");
 
 if (!isset($_GET["id"])) {
@@ -18,7 +18,7 @@ $upNextVideo = VideoProvider::getUpNext($con, $video);
         <h1><?php echo $video->getTitle(); ?></h1>
     </div>
 
-    <div class="videoControls upNext" style="display: none">
+    <div id="upNext" class="videoControls upNext" style="display: none">
         <button onclick="restartVideo()"><img src="assets/images/restart.png" alt="restart"></button>
 
         <div class="upNextContainer">
@@ -26,7 +26,7 @@ $upNextVideo = VideoProvider::getUpNext($con, $video);
             <h3><?php echo $upNextVideo->getTitle(); ?></h3>
             <h3><?php echo $upNextVideo->getSeasonAndEpisode(); ?></h3>
 
-            <button class="playNext" onclick="watchVideo(<?php echo $upNextVideo->getId(); ?>)"><img src="assets/images/play-white.png" alt="">Play</button>
+            <button class="playNext" onclick="watchVideo(<?php echo $upNextVideo->getId(); ?>)"><img src="assets/images/play.png" alt="play">Play</button>
         </div>
     </div>
 

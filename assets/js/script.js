@@ -3,6 +3,23 @@ const videoPlayer = document.querySelector("video");
 const restart = document.getElementById("restart");
 
 //functions
+
+window.onscroll = function() {
+        navBarStickyOnScroll();
+} 
+
+function navBarStickyOnScroll() {
+    const navBar = document.querySelector(".topBar");
+    let sticky = navBar.offsetTop;
+
+    if (window.pageYOffset <= sticky) {
+        navBar.classList.remove("scrolled");
+    } 
+    else {
+        navBar.classList.add("scrolled");
+    }
+}
+
 function volumeToggle(button) {
     //when you click the button it always does the opposite of what is currently set
     const toggleMute = document.querySelector(".previewVideo").muted = !document.querySelector(".previewVideo").muted;
@@ -161,10 +178,8 @@ function watchVideo(videoId) {
     window.location.href = "watch.php?id=" + videoId;
 }
 
-function goToHomePage() {
-    window.location.href = "index.php";
-}
-
 function showUpNext() {
     $(".upNext").fadeIn();
+    // let upNext = document.getElementById("upNext");
+    // upNext.setAttribute("style", "display:flex", "z-index:50");
 }

@@ -29,7 +29,6 @@ class PreviewProvider {
         $subHeading = $video->isMovie() ? "" : "<h4>$seasonEpisode</h4>";
         
         return "<div class='previewContainer'>
-                    <button onclick='goToHomePage()' class='homePageButton'><img src='assets/images/home.png' alt='Go to Home Page'></button>
                     <img src='$thumbnail' class='previewImage' hidden>
                     <video autoplay muted class='previewVideo' onended='previewEnded()'>
                         <source src='$preview' type='video/mp4'>

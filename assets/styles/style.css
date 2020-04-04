@@ -125,27 +125,6 @@ a {
     display: flex;
 }
 
-.homePageButton {
-    z-index: 5;
-    position: absolute;
-    border: none;
-    cursor: pointer;
-    background-color: oldlace;
-    opacity: 60%;
-    top: 25px;
-    left: 25px;
-    border-radius: 20%;
-}
-
-.homePageButton:hover {
-    opacity: 80%;
-}
-
-.homePageButton img {
-    width: 45px;
-    height: 45px;
-}
-
 /* preview card styles */
 .previewContainer.small {
     width: 230px;
@@ -337,6 +316,10 @@ a {
     justify-content: center;
 }
 
+.upNext.active {
+    display: flex;
+}
+
 .upNextContainer button {
     padding: 0;
 }
@@ -344,4 +327,54 @@ a {
 .upNextContainer h2, 
 .upNextContainedr h3 {
     color: #fff;
+}
+
+/* ----------------------- Navigation (Navbar) Styles ----------------------- */
+
+.topBar {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    padding: 0 60px;
+    height: 70px;
+    box-sizing: border-box;
+    min-width: 1050px;
+    transition: background-color 200ms linear;
+}
+
+.topBar.scrolled {
+    background-color: #141414;
+    transition: background-color 200ms linear;
+}
+
+.logoContainer {
+    height: 40px;
+}
+
+.logoContainer img {
+    height: 100%;
+}
+
+.navLinks {
+    display: flex;
+    list-style: none;
+}
+
+.navLinks a {
+    color: #fff;
+    font-size: 14px;
+    margin-left: 20px;
+}
+
+.rightItems {
+    flex: 1;
+    text-align: right;
+}
+
+.rightItems img {
+    width: 50px;
+    position: relative;
+    margin-left: 10px;
 }

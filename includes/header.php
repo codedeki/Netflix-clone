@@ -30,3 +30,8 @@ $userLoggedIn = $_SESSION["userLoggedIn"];
 </head>
 <body>
     <div class="wrapper">
+
+<!-- to keep navbar only in pages specified; i.e. hide navbar in watch.php wheen we watch video -->
+<?php if (!isset($hideNav)) {
+    include_once("includes/navBar.php");
+} ;?>
