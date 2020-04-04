@@ -51,7 +51,7 @@ class SeasonProvider {
                             
                             <div class='videoInfo'>
                                 <h4>$episodeNumber . $name</h4>
-                                <span>$description</span>
+                                <span id='episodeText'>$description</span>
                             </div>
 
                             $hasSeen

@@ -5,12 +5,15 @@ const restart = document.getElementById("restart");
 //functions
 
 window.onscroll = function() {
+    const navBar = document.querySelector(".topBar");
+    if (navBar) {
         navBarStickyOnScroll();
+    }
 } 
 
 function navBarStickyOnScroll() {
     const navBar = document.querySelector(".topBar");
-    let sticky = navBar.offsetTop;
+    const sticky = navBar.offsetTop;
 
     if (window.pageYOffset <= sticky) {
         navBar.classList.remove("scrolled");
@@ -169,9 +172,16 @@ function setStartTime(videoId, username) {
 }
 
 function restartVideo() {
-    $("video")[0].currentTime = 0;
-    $("video")[0].play();
-    $(".upNext").fadeOut();
+    const upNext = document.querySelector(".upNext");
+
+    videoPlayer.currentTime = 0;
+    videoPlayer.play();
+
+    if (upNext.style.cssText = "display: flex") {
+        upNext.setAttribute("style", "display: none");
+    } else {
+        upNext.setAttribute("style", "display: flex");
+    }
 }
 
 function watchVideo(videoId) {
@@ -179,7 +189,10 @@ function watchVideo(videoId) {
 }
 
 function showUpNext() {
-    $(".upNext").fadeIn();
-    // let upNext = document.getElementById("upNext");
-    // upNext.setAttribute("style", "display:flex", "z-index:50");
+    const upNext = document.querySelector(".upNext");
+        if (upNext.style.cssText = "display: none") {
+            upNext.setAttribute("style", "display: flex");
+        } else {
+            upNext.setAttribute("style", "display: none");
+        }
 }

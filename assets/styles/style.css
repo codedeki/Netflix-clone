@@ -3,11 +3,11 @@ body {
     height: 100%;
     padding: 0;
     margin: 0;
+    color: #333
 }
 
 * {
     font-family: Arial, Helvetica, sans-serif;
-    color: #333;
     box-sizing: border-box;
 }
 
@@ -180,6 +180,15 @@ a {
     cursor: pointer;
 }
 
+.buttons {
+    display: flex;
+}
+
+#playOrContinueText {
+    color: #fff;
+    margin-left: 5px;
+}
+
 .buttons button i {
     color: inherit;
 }
@@ -300,6 +309,10 @@ a {
     cursor: pointer;
 }
 
+#episodeText {
+    color: #333
+}
+
 /* ----------------------- Watch Page Styles ----------------------- */
 
 .watchNav.active {
@@ -377,4 +390,10 @@ a {
     width: 50px;
     position: relative;
     margin-left: 10px;
+}
+
+/* ----------------------- Tv Shows Page Styles ----------------------- */
+
+.previewCategories h1 {
+    color: #e5e5e5;
 }

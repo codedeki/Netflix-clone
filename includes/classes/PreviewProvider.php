@@ -9,6 +9,36 @@ class PreviewProvider {
         $this->username = $username;
     }
 
+    public function createCategoryPreviewVideo($categoryId) {
+        $entitiesArray = EntityProvider::getEntities($this->con, $categoryId, 1);
+
+        if (sizeof($entitiesArray) == 0) {
+            ErrorMessage::show("No TV shows to display");
+        }
+
+        return $this->createPreviewVideo($entitiesArray[0]);
+    }
+
+    public function createTVShowPreviewVideo() {
+        $entitiesArray = EntityProvider::getTVShowEntities($this->con, null, 1);
+
+        if (sizeof($entitiesArray) == 0) {
+            ErrorMessage::show("No TV shows to display");
+        }
+
+        return $this->createPreviewVideo($entitiesArray[0]);
+    }
+
+    public function createMoviesPreviewVideo() {
+        $entitiesArray = EntityProvider::getMoviesEntities($this->con, null, 1);
+
+        if (sizeof($entitiesArray) == 0) {
+            ErrorMessage::show("No movies to display");
+        }
+
+        return $this->createPreviewVideo($entitiesArray[0]);
+    }
+
     public function createPreviewVideo($entity) {
         if ($entity == null) {
             $entity = $this->getRandomEntity();
@@ -23,7 +53,7 @@ class PreviewProvider {
         $video = new Video($this->con, $videoId);
 
         $inProgress = $video->isInProgress($this->username);
-        $playButtonText = $inProgress ? "Continue Watching" : "Play";
+        $playButtonText = $inProgress ? "<span id='PlayOrContinueText' style='margin-left:5px; color: #fff;'>Continue Watching</span>" : "<span id='PlayOrContinueText' style='margin-left:5px; color: #fff;'>Play</span>";
 
         $seasonEpisode = $video->getSeasonAndEpisode();
         $subHeading = $video->isMovie() ? "" : "<h4>$seasonEpisode</h4>";

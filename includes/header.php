@@ -22,16 +22,15 @@ $userLoggedIn = $_SESSION["userLoggedIn"];
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Netflix N Chilli</title>
     <link rel="stylesheet" type="text/css" href="assets/styles/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="assets/js/script.js"></script>
+    <script src="assets/js/script.js" async></script>
 </head>
 <body>
     <div class="wrapper">
 
-<!-- to keep navbar only in pages specified; i.e. hide navbar in watch.php wheen we watch video -->
+<!-- to keep navbar only in pages specified; i.e. hide navbar in watch.php when we watch video -->
 <?php if (!isset($hideNav)) {
     include_once("includes/navBar.php");
 } ;?>
