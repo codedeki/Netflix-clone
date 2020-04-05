@@ -1,9 +1,7 @@
 //queries
 const videoPlayer = document.querySelector("video");
-const restart = document.getElementById("restart");
 
 //functions
-
 window.onscroll = function() {
     const navBar = document.querySelector(".topBar");
     if (navBar) {

@@ -19,5 +19,9 @@
         <a href="profile.php">
             <img src="assets/images/user.png" alt="profile logo">
         </a>
+
+        <a href="logout.php">
+            <img src="assets/images/logout.png" alt="logout logo">
+        </a>
     </div>
 </div>

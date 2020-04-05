@@ -23,7 +23,7 @@ include_once("includes/header.php");
 
             if (val != "") {
                 $.post("ajax/getSearchResults.php", { term: val, username: username}, function (data) {
-                    $(".results").html(data); //injeect php data into html
+                    $(".results").html(data); //inject php data into html
                 })
             }
             else {
