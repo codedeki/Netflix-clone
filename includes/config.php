@@ -12,7 +12,4 @@ catch (PDOException $e) {
     exit("Failed to connect to database " . $e->getMessage());
 }
 
-
-
-
 ?>

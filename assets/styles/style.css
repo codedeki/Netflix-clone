@@ -27,6 +27,7 @@ a h3:hover {
 
 a {
     text-decoration: none;
+    color: #0687ba;
 }
 
 /* ----------------------- Register & LogIn Form Styles ----------------------- */
@@ -466,4 +467,10 @@ a {
 
 .alertSuccess {
     color: #2ecc71;
+}
+
+.formSection h3 {
+    padding: 0;
+    color: #fff;
+    font-size: 20px;
 }
