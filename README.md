@@ -7,7 +7,7 @@ _built solely with PHP, HTML, CSS & JavaScript_
 * Vanilla JS & JQuery
 * Native PHP
 
-                             * Note: This website will only work if you create an identical database structure *
+      * Note: This website will only work if you create an identical database structure *
 
 ### Step 1: Create the Database:
      Open PHP My Admin and run an SQL DUMP by uploading the following file (or copying and pasting the file contents): database-STRUCTURE-AND-DATA.sql or database-STRUCTURE-ONLY.sql.
